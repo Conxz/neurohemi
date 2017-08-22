@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to the pages for the Brain Asymmetry Projects
 
 You can use the [editor on GitHub](https://github.com/Conxz/neurohemi/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
