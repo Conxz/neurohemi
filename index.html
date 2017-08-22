@@ -1,1 +1,53 @@
-<h1>Test</h1>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="author" content="Xiangzhen Kong" />
+<title>Text</title>
+<style type="text/css">
+input{display:none}
+</style>
+<script type="text/javascript"> 
+function $(obj){
+  return document.getElementById(obj);
+} 
+function show(objid){
+  $(objid).style.display='inline';
+} 
+function hidden(objid){
+  $(objid).style.display='none';
+} 
+function doit(){ 
+  var sel_val=$('sel').value; 
+  if(sel_val==''){
+    hidden('textOne');
+    hidden('textTwo');
+  } 
+  if(sel_val==0){
+    hidden('textOne');
+    hidden('textTwo');
+  } 
+  if(sel_val==1){
+    show('textOne');hidden('textTwo');
+  } 
+  if(sel_val==2){
+    show('textTwo');hidden('textOne');
+  } 
+} 
+window.onload=function(){
+  var sel=document.getElementById("sel");
+  sel.onchange=doit;
+}
+</script> 
+</head>
+<body> 
+<select name="sel" id="sel"> 
+  <option selected="selected">--请选择--</option> 
+  <option value="0">隐藏文本框</option> 
+  <option value="1">显示文本框一</option> 
+  <option value="2">显示文本框二</option> 
+</select> 
+<input value="文本框一" type="text" id="textOne"/> 
+<input value="文本框二" type="text" id="textTwo" /> 
+</body> 
+</html>
