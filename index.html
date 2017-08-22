@@ -3,10 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="author" content="Xiangzhen Kong" />
-<title>Text</title>
+<title>Brain Asymmetry Projects - Cortical Asymmetry</title>
 <style type="text/css">
 input{display:none}
 </style>
+  
 <script type="text/javascript"> 
 function $(obj){
   return document.getElementById(obj);
@@ -39,13 +40,25 @@ window.onload=function(){
   sel.onchange=doit;
 }
 </script> 
+
 </head>
-<body> 
+
+<body>
+<h1>Test2</h1>
+
 <select name="sel" id="sel"> 
-  <option selected="selected">--请选择--</option> 
-  <option value="0">隐藏文本框</option> 
-  <option value="1">显示文本框一</option> 
+  <option selected="selected">--Cortical Measures--</option> 
+  <option value="0">Cortical Thickness</option> 
+  <option value="1">Surface Area</option> 
   <option value="2">显示文本框二</option> 
+</select> 
+<select name="sel2" id="sel2"> 
+  <option selected="selected">--Effects--</option> 
+  <option value="0">Population-level Asymmetry</option> 
+  <option value="1">Sex Effects</option> 
+  <option value="2">Age Effects</option>
+  <option value="2">Handedness Effects</option> 
+  <option value="2">Brain Size Effects</option> 
 </select> 
 <input value="文本框一" type="text" id="textOne"/> 
 <input value="文本框二" type="text" id="textTwo" /> 
