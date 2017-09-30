@@ -2,65 +2,183 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="brain asymmetry, lateralization, cortical thickness, surface area, meta-analysis" />
 <meta name="author" content="Xiangzhen Kong" />
-<title>Brain Asymmetry Projects - Cortical Asymmetry</title>
+<title>Brain and Behavioral Asymmetry Project - Mapping Brain and Behavioral Asymmetry</title>
 <style type="text/css">
-input{display:none}
-</style>
+  html{text-align:center;}
+  .hidden {
+      display: none;
+  }
+  .visible {
+      display: block;
+  }
   
+  select {
+    font-size:0.9em;
+  }
+  
+  .clearfix { *zoom: 1;}
+  .clearfix:after{ content: ""; display: block; height: 0; visibility:hidden; clear: both;}
+  #header{ width: 96%; height: 40px; margin: 0 auto;}
+  #body{ width: 96%; margin: 0 auto;}
+  #aside{ float: left; width: 320px; background: #eee;}
+  #main{ margin-left: 240px; margin-top:1%}
+  #footer{ width: 96%; height: 30px; margin: 0 auto; }
+</style>
+
 <script type="text/javascript"> 
 function $(obj){
   return document.getElementById(obj);
 } 
-function show(objid){
-  $(objid).style.display='inline';
-} 
-function hidden(objid){
-  $(objid).style.display='none';
-} 
 function doit(){ 
-  var sel_val=$('sel').value; 
-  if(sel_val==''){
-    hidden('textOne');
-    hidden('textTwo');
+  var sel_val=$('sel').value;
+  var sel2_val=$('sel2').value;
+  var sel3_val=$('sel3').value;
+  var imgsrc = "./img/Fig. S1.png";
+  var metric_str;
+  var region_str;
+  var file_name;
+  
+  if(sel_val==='0'){
+    metric_str = "thick";
   } 
-  if(sel_val==0){
-    hidden('textOne');
-    hidden('textTwo');
-  } 
-  if(sel_val==1){
-    show('textOne');hidden('textTwo');
-  } 
-  if(sel_val==2){
-    show('textTwo');hidden('textOne');
-  } 
-} 
+  if(sel_val=='1'){
+    metric_str = "area";
+  }
+  
+  region_str = sel2_val;
+  if(region_str=="hemi"){
+    if(metric_str=="thick"){
+      file_name="Asy_L_Thickness_asy_forest.svg";
+    }
+    if(metric_str=="area"){
+      file_name="Asy_L_SurfArea_asy_forest.svg";
+    }
+  }else{
+    file_name = region_str.concat("_asy_", metric_str, "_forest.svg");
+  }
+  
+  if(sel3_val=='0'){
+    folder = 'img/stats_asy';
+  }
+  if(sel3_val=='1'){
+    folder = 'img/sexstats_asy';
+  }
+  if(sel3_val=='2'){
+    folder = 'img/agestats_asy';
+  }
+  if(sel3_val=='3'){
+    folder = 'img/handstats_asy';
+  }
+  if(sel3_val=='4'){
+    folder = 'img/icvstats_asy';
+  }
+  if(sel_val!==''&sel2_val!==''&sel3_val!==''){
+    imgsrc = folder.concat("/",file_name);
+  }
+  
+  document.getElementById('image').src = imgsrc;
+}
+
 window.onload=function(){
   var sel=document.getElementById("sel");
+  var sel2=document.getElementById("sel2");
+  var sel3=document.getElementById("sel3");
   sel.onchange=doit;
-}
-</script> 
-
+  sel2.onchange=doit;
+  sel3.onchange=doit;
+};
+</script>
 </head>
-
 <body>
-<h1>Test2</h1>
+<div id="header"><h2>Cortical Asymmetry Mapping from the ENIGMA Lateralization Working Group</h2></div>
+<div id="body" class="clearfix">
+		<div id="aside">
+			<div class="inner">
+        <div id="intro", class="visible" >
+          <p style="font-size:14px; text-align:left; margin-left:7px; margin-right:7px">
+<b>Mapping Cortical Asymmetry in 17,141 Healthy Individuals <a href='sites.html' target='_blank'>Worldwide</a> via the ENIGMA Consortium</b></p>
+          <p style="font-size:14px; text-align:left; margin-left:7px; margin-right:7px">
+Hemispheric asymmetry is a cardinal feature of human brain organization. Abnormal brain asymmetry is also linked to numerous cognitive and neuropsychiatric disorders. Here we present the largest ever analysis of brain asymmetry and its variability across individuals (<b>N = 17141</b>). Results revealed widespread asymmetries at both hemispheric and regional levels. In addition to population-level asymmetries, variability in the brain asymmetry was found related to sex, age, and brain size. Surprisingly, we did not find significant associations between asymmetries and handedness. Finally, with two independent pedigree datasets, we found several asymmetries showing considerable heritability. This study provides a reference normative resource for future studies of altered brain asymmetry in cognitive, neurological, and psychiatric disorders, and the genetic basis of brain asymmetry.          <p style="font-size:14px; text-align:left; margin-left:7px; margin-right:7px">
+We present summary statistic results from the ENIGMA Lateralization Working Group. This site will help researchers to query the results by specifying <b>Cortical Measures</b>, <b>Regions of Interest</b>, and <b>Effects of Interest</b>. </p>
+          <p style="font-size:12px; text-align:left; margin-left:7px; margin-right:7px">
+<i>The image by default on the right shows an overview of mixed results of cortical thickness asymmetry in published papers with relatively small sample sizes (N < 300).</i></p>
+        </div>
+			</div>
+		</div>
+    <div id="main">
+			<div class="inner">
+				<select name="sel" id="sel"> 
+          <option selected="selected", value="">---Cortical Measures---</option> 
+          <option value="0">Cortical Thickness</option> 
+          <option value="1">Surface Area</option> 
+        </select>
 
-<select name="sel" id="sel"> 
-  <option selected="selected">--Cortical Measures--</option> 
-  <option value="0">Cortical Thickness</option> 
-  <option value="1">Surface Area</option> 
-  <option value="2">显示文本框二</option> 
-</select> 
-<select name="sel2" id="sel2"> 
-  <option selected="selected">--Effects--</option> 
-  <option value="0">Population-level Asymmetry</option> 
-  <option value="1">Sex Effects</option> 
-  <option value="2">Age Effects</option>
-  <option value="2">Handedness Effects</option> 
-  <option value="2">Brain Size Effects</option> 
-</select> 
-<input value="文本框一" type="text" id="textOne"/> 
-<input value="文本框二" type="text" id="textTwo" /> 
+        <select name="sel2" id="sel2"> 
+          <option selected="selected", value="">---Regions of Interest---</option> 
+          <option value="hemi">Whole Hemisphere</option>
+          
+          <option value="bankssts">Banks of the Superior Temporal Sulcus</option>
+          <option value="caudalanteriorcingulate">Caudal Anterior Cingulate</option>
+          <option value="caudalmiddlefrontal">Caudal Middle Frontal</option>
+          <option value="_cuneus">Cuneus</option> 
+          <option value="entorhinal">Entorhinal</option>
+          <option value="fusiform">Fusiform</option>
+          <option value="inferiorparietal">Inferior Parietal</option>
+          <option value="inferiortemporal">Inferior Temporal</option> 
+          <option value="isthmuscingulate">Isthmus Cingulate</option>
+          <option value="lateraloccipital">Lateral Occipital</option>
+          
+          <option value="lateralorbitofrontal">Lateral Orbitofrontal</option>
+          <option value="lingual">Lingual</option> 
+          <option value="medialorbitofrontal">Medial Orbitofrontal</option>          
+          <option value="middletemporal">Middle Temporal</option>
+          <option value="parahippocampal">Parahippocampal</option>
+          <option value="paracentral">Paracentral</option>
+          <option value="parsopercularis">Pars Opercularis</option> 
+          <option value="parsorbitalis">Pars Orbitalis</option>
+          <option value="parstriangularis">Pars Triangularis</option>
+          <option value="pericalcarine">Pericalcarine</option>
+          
+          <option value="postcentral">Postcentral</option> 
+          <option value="posteriorcingulate">Posterior Cingulate</option>
+          <option value="precentral">Precentral</option>
+          <option value="precuneus">Precuneus</option>
+          <option value="rostralanteriorcingulate">Rostral Anterior Cingulate</option> 
+          <option value="rostralmiddlefrontal">Rostral Middle Frontal</option>          
+          <option value="superiorfrontal">Superior Frontal</option>
+          <option value="superiorparietal">Superior Parietal</option> 
+          <option value="superiortemporal">Superior Temporal</option>
+          <option value="supramarginal">Supramarginal</option>
+          
+          <option value="frontalpole">Frontal Pole</option>
+          <option value="temporalpole">Temporal Pole</option> 
+          <option value="transversetemporal">Transverse Temporal</option>
+          <option value="insula">Insula</option>
+
+        </select> 
+
+        <select name="sel3" id="sel3"> 
+          <option selected="selected", value="">---Effects of Interest---</option> 
+          <option value="0">Population-level Asymmetry</option> 
+          <option value="1">Sex Effects</option> 
+          <option value="2">Age Effects</option>
+          <option value="3">Handedness Effects</option> 
+          <option value="4">Brain Size Effects</option> 
+        </select>
+
+        <div style="text-align:center;">
+          <img src="./img/Fig. S1.png", alt='plot', width=80%, name='image', id='image'/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="footer"><font size="2">Supported by <a href='http://conxz.net/about/' target="_blank">Xiangzhen Kong</a>@<a href='http://www.mpi.nl/' target="_blank">Max Planck Institute for Psycholinguistics</a></font></div>
+
+</div>
+
+
 </body> 
 </html>
